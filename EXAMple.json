@@ -1,0 +1,192 @@
+{
+  "title": "EXAMple Exam (Get it?)",
+  "subject": "Complex Problems and Riddles",
+  "year": "2024",
+  "northernHemisphere": false,
+  "author": "Dart Spark",
+  "sections": [
+    {
+      "name": "Complex Problem Multiple-choice",
+      "instructions": "Answer <b>all</b> questions in pencil on the answer sheet provided for multiple-choice questions.\nChoose the response that is <b>correct</b> or that <b>best answers</b> the question.\nA correct answer scores 1; an incorrect answer scores 0.\nMarks will <b>not</b> be deducted for incorrect answers.\nNo marks will be given if more than one answer is completed for any question.",
+      "questions": [
+        {
+          "content": [
+            { "type": "text", "text": "What colour is a carrot?" },
+            {
+              "type": "response",
+              "format": "m",
+              "choices": [
+                "Green",
+                "Banana",
+                "Orange",
+                "Carrot? I think it's uhhh... I think issss uhhh. I think it's a Carrot yuh. Carrot 'bout yuuuh. Uhh I don't know about Carrots, I don't know nuttin' 'bout dat."
+              ],
+              "answer": 3
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "type": "text",
+              "text": "If you dig a 6 foot hole, how deep is that hole?"
+            },
+            {
+              "type": "response",
+              "format": "m",
+              "choices": [
+                "It's probably like, 20 feet",
+                "6 feet",
+                "6 inches",
+                "182.88 cm"
+              ],
+              "answer": [2, 4]
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "type": "text",
+              "text": "1-1="
+            },
+            {
+              "type": "response",
+              "format": "m",
+              "choices": ["1", "1÷0", "Equals? 35", "0"],
+              "answer": 4
+            }
+          ]
+        },
+        {
+          "content": [
+            { "type": "text", "text": "What is a BMW?" },
+            {
+              "type": "response",
+              "format": "m",
+              "choices": [
+                "A company called Bayerische Motoren Werke",
+                "A BMW is a car",
+                "An acronym",
+                "All of the above"
+              ],
+              "answer": 2
+            },
+            { "type": "text", "text": "Spell BMW" },
+            {
+              "type": "response",
+              "format": "m",
+              "choices": [
+                "Bayerische Motoren Werke",
+                "DY",
+                "Bee em double you",
+                "BMW"
+              ],
+              "answer": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Riddles",
+      "instructions": "Answer <b>all</b> questions in the spaces provided.",
+      "questions": [
+        {
+          "content": [
+            {
+              "type": "text",
+              "text": "What can run but never walks, has a mouth but never talks, has a head but never weeps, has a bed but never sleeps?"
+            },
+            {
+              "type": "response",
+              "format": "s",
+              "answer": "River",
+              "explanation": "The water of a River runs so a River can run but Rivers cannot walk.\nRivers always lead to the sea and the point where they meet the sea is called its mouth but Rivers cannot talk.\nThe start of a River is called a head but a River cannot literally weep. The base at the bottom of a River is called a riverbed so a River has a bed but it cannot sleep.",
+              "marks": 1
+            },
+            {
+              "type": "text",
+              "text": "Using the answer from the previous question, identify and define what a 'Bank' is in this context."
+            },
+            {
+              "type": "response",
+              "format": "x",
+              "answer": "Students were awarded a mark for identifying that it would mean a 'Riverbank' and one for giving an accurate definition of a Riverbank.",
+              "explanation": "In the context of a River, a 'bank' would refer to a Riverbank which is the land at either edge of a river.",
+              "examples": [
+                "A bank would refer to a Riverbank which is the part where the water of the River meets land."
+              ],
+              "marks": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Difficult questions",
+      "instructions": "Answer <b>all</b> questions as instructed.",
+      "questions": [
+        {
+          "content": [
+            {
+              "type": "text",
+              "text": "Fill in the two way table with either 'True' or 'False' for each square"
+            },
+            {
+              "type": "response",
+              "format": "t",
+              "cells": [
+                [
+                  { "entry": false, "text": "Item" },
+                  { "entry": false, "text": "Is fruit" },
+                  { "entry": false, "text": "Is liquid" }
+                ],
+                [
+                  { "entry": false, "text": "Juice" },
+                  { "entry": true, "answer": "True" },
+                  { "entry": true, "answer": "True" }
+                ],
+                [
+                  { "entry": false, "text": "Orange" },
+                  { "entry": true, "answer": "True" },
+                  { "entry": true, "answer": "False" }
+                ],
+                [
+                  { "entry": false, "text": "Water" },
+                  { "entry": true, "answer": "False" },
+                  { "entry": true, "answer": "True" }
+                ],
+                [
+                  {
+                    "entry": false,
+                    "text": "Boeing AH-64 Apache Attack Helicopter"
+                  },
+                  { "entry": true, "answer": "False" },
+                  { "entry": true, "answer": "False" }
+                ]
+              ]
+            }
+          ]
+        },
+        {
+          "content": [
+            {
+              "type": "text",
+              "text": "Select all correct answers. What is a cat?"
+            },
+            {
+              "type": "response",
+              "format": "c",
+              "options": [
+                { "text": "Cute", "correct": true },
+                { "text": "A feline", "correct": true },
+                { "text": "A type of dog", "correct": false }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

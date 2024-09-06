@@ -1,0 +1,375 @@
+{
+    "title": "2020 Applied Computing: Software Development",
+    "subject": "Software Development",
+    "year": "2020",
+    "northernHemisphere": false,
+    "author": "Victorian Curriculum and Assessment Authority",
+    "sections": [
+      {
+        "name": "Multiple-choice questions",
+        "instructions": "Answer all questions in pencil on the answer sheet provided for multiple-choice questions.\nChoose the response that is correct or that best answers the question.\nA correct answer scores 1; an incorrect answer scores 0.\nMarks will not be deducted for incorrect answers.\nNo marks will be given if more than one answer is completed for any question.",
+        "questions": [
+          {
+            "content": [
+              { "type": "text", "text": "The most appropriate data type to store a value that reflects the length of a window frame in millimetres is" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": ["String", "Integer", "Boolean", "Floating point"],
+                "answer": 2
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Which one of the following is a suitable technique for documenting the need or opportunity for a school canteen stock tracking software?" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": [
+                  "Making a journal entry",
+                  "Writing a problem statement",
+                  "Maintaining a log or annotations",
+                  "Completing a software requirements specification (SRS)"
+                ],
+                "answer": 2
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Which search algorithm would be the best choice if the canteen staff want the fastest option to search a product list by name?" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": [
+                  "Quick search, if the list is sorted",
+                  "Linear search, if the list is unsorted",
+                  "Binary search, if the list is unsorted",
+                  "Selection search, if the list is sorted"
+                ],
+                "answer": 2
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Which set of test data should be used to check a validation rule that limits all item prices to values between 50 cents and $8.00?" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": [
+                  "0, 50, 8, 9",
+                  "0.4, 0.5, 0.8, 0.9",
+                  "0.49, 0.50, 0.51, 8.00, 8.01",
+                  "0, 49, 50, 51, 79, 80, 81"
+                ],
+                "answer": 3
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Assuming that time is not a constraint, which is the most appropriate technique to collect detailed and authentic data about an existing information system?" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": ["Reports", "Surveys", "Interviews", "Observations"],
+                "answer": 4
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Having a limited amount of time to complete a software solution is an example of" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": [
+                  "A usability constraint",
+                  "An economic constraint",
+                  "A technical requirement",
+                  "A non-functional requirement"
+                ],
+                "answer": 2
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Consider the following partial use case diagram, which shows how a gym member interacts with a booking system for personal trainers." },
+              { "type": "text", "text": "<<__>>, next to each dashed arrow indicates which relationship type?" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": ["Actor", "Extends", "Includes", "Initiates"],
+                "answer": 3
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "After an SRS has been completed, designs need to be created. Which of the following are valid techniques for generating different design ideas?" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": [
+                  "Algorithms and mock-ups",
+                  "Mind maps and pseudocode",
+                  "Brainstorming and mind maps",
+                  "Mock-ups and data dictionaries"
+                ],
+                "answer": 3
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Richard is designing a software solution that requires users to interact with the solution using a variety of devices and operating systems. What are the most important design factors Richard should consider?" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": [
+                  "Affordance and security",
+                  "Usability and interoperability",
+                  "Marketability and affordance",
+                  "Interoperability and marketability"
+                ],
+                "answer": 2
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "An organisation disposed of files in January 2019. In November 2020, those files" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": [
+                  "Cannot be recovered",
+                  "Can be recovered from archives",
+                  "Can be recovered from desktop trash",
+                  "Can be recovered from backups stored offsite"
+                ],
+                "answer": 1
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "To upload an Australian landscape photograph using a wireless connection at 20 megabits per second with an average file size of 5 megabytes will take approximately" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": ["0.8 seconds", "1.3 seconds", "2.0 seconds", "2.7 seconds"],
+                "answer": 3
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Which one of the following is the name of the data structure that stores member information, including name, gender, age group, and best time?" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": [
+                  "Record",
+                  "Hash table",
+                  "One-dimensional array",
+                  "Two-dimensional array"
+                ],
+                "answer": 1
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "What is the output of the following pseudocode?" },
+              { "type": "text", "text": "A = 7, B = 1, C = A * B, A = A - 1, B = B + 1. Repeat until A < 4. Print C." },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": ["7", "12", "15", "16"],
+                "answer": 4
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "The validation that checks if a number entered is positive is called" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": ["Fact checking", "Type checking", "Range checking", "Existence checking"],
+                "answer": 3
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "When developing a software solution, the data used for testing validation would include" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": [
+                  "Correct and incorrect data",
+                  "Incorrect data only",
+                  "Correct data only",
+                  "Symbols only"
+                ],
+                "answer": 1
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Which precaution could Remi have taken to prevent malware from accessing his data after installing third-party applications?" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": [
+                  "Setting up a firewall",
+                  "Reading terms and conditions",
+                  "Installing antivirus software",
+                  "Checking reviews online"
+                ],
+                "answer": 3
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "A suitable criterion for evaluating the efficiency of a software solution is" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": [
+                  "The solution’s appearance is attractive",
+                  "The solution generates accurate results",
+                  "The final output has all required components",
+                  "The solution requires fewer steps to complete tasks"
+                ],
+                "answer": 4
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Version control is used in software development to" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": [
+                  "Help developers keep track of the correct version",
+                  "Ensure multiple versions are presented to clients",
+                  "Fully test solutions to meet functional requirements",
+                  "Preserve older versions for reference"
+                ],
+                "answer": 1
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Cross-site scripting occurs when a" },
+              {
+                "type": "response",
+                "format": "m",
+                "choices": [
+                  "Website accesses another website",
+                  "Web browser becomes infected with malware",
+                  "Web application delivers malicious script to the user's browser",
+                  "Web server returns internal server errors"
+                ],
+                "answer": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Short-answer questions",
+        "instructions": "Answer all questions in the spaces provided.",
+        "questions": [
+          {
+            "content": [
+              { "type": "text", "text": "Explain the purpose of a naming convention and how it will assist with improving a data dictionary." },
+              {
+                "type": "response",
+                "format": "s",
+                "answer": "A naming convention provides consistency in naming variables, making it easier to read and maintain code."
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Complete the pseudocode for the 'Guess the secret number' game." },
+              {
+                "type": "response",
+                "format": "x",
+                "answer": "secretNum = random(1,100)\nguessCounter = 0\nPrint \"Enter the secret number\"\nguessNum = input value\nRepeat until guessNum = secretNum or guessCounter >= 15\n If guessNum > secretNum\n Print \"Too high\"\n guessCounter += 1\n Else If guessNum < secretNum\n Print \"Too low\"\n guessCounter += 1\n End If\nPrint guessCounter\nIf guessCounter < 15\n Print \"Well done!\"\nElse\n Print \"It took too long!\"",
+                "marks": 7
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Explain why a function would be used to perform a calculation instead of a procedure." },
+              {
+                "type": "response",
+                "format": "s",
+                "answer": "A function is used to perform a calculation because it returns a value, whereas a procedure does not."
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "List two procedures for managing data and files used in a software solution." },
+              {
+                "type": "response",
+                "format": "s",
+                "answer": "1. Regular backups\n2. Archiving and disposal of data"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Case study",
+        "instructions": "Use the case study provided in the insert to answer the questions in this section. Answers must apply to the case study.",
+        "questions": [
+          {
+            "content": [
+              { "type": "text", "text": "Identify one information system goal of the FRIDGESMART app." },
+              {
+                "type": "response",
+                "format": "s",
+                "answer": "To provide efficient ordering of HOMEMADE products."
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Justify why John selected an agile development model rather than a waterfall development model for the app." },
+              {
+                "type": "response",
+                "format": "s",
+                "answer": "Agile allows for feedback and adaptability at the end of each iteration, whereas waterfall does not allow for changes once development starts."
+              }
+            ]
+          },
+          {
+            "content": [
+              { "type": "text", "text": "Complete the data flow diagram by writing the correct labels for A, B, C, and D." },
+              {
+                "type": "response",
+                "format": "x",
+                "answer": "A = Customer\nB = Order confirmation notification\nC = Customer order\nD = HOMEMADE database"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
