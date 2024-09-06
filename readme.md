@@ -13,7 +13,7 @@ Exams can be taken in various modes:
     - Get immediate feedback after each question and learn what the correct answer was and why
 
 ## How to digitze existing exams
-To convert an exam into the correct JSON format you can go to [ChatGPT](https://chatgpt.com/) and use model 4o to convert the exam. Simply upload the exam PDF and the examiners report PDF and paste in the prompt provided in prompt.txt. For long exams you may need to occasionally press "Keep Generating" to get the model to keep outputing the JSON data. Then create a new .json file in the exams folder and paste in the output from ChatGPT.
+To convert an exam into the correct JSON format you can go to [ChatGPT](https://chatgpt.com/) and use model 4o to convert the exam. Simply upload the exam PDF and the examiners report PDF if avalible and paste in the prompt provided in prompt.txt. For long exams you may need to occasionally press "Keep Generating" to get the model to keep outputing the JSON data. Then create a new .json file in the exams folder and paste in the output from ChatGPT.
 
 ## How to generate new exams
 Unfinished, would probably use a python tool with a prompt where you can upload reference exams and the study design.

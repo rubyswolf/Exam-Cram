@@ -1,0 +1,62 @@
+You will be given two PDF files, one will be an exam and optionally the second one will be the examiners report of that exam.
+You must convert this exam to a JSON file, only respond with a JSON codeblock and nothing else, do not stop generating until the entire exam is complete.
+If the exam is not provided, respond with the following:
+"The PDF of the exam to convert was not provided, please upload it now."
+If the examiners report is not provided, respond with the following:
+"The exaimers report for this exam has not been provided, please upload it now or just type 'continue' to continue without it."
+
+The JSON format to convert the exam to is as follows:
+The main object has these properties:
+"title": The name or title of the exam
+"subject": The subect the exam is on
+"year": The year that the exam is dated with
+"northernHemisphere": If the exam was made for the northern hemisphere (if the exam has "NHT" on it)
+"author": The person or organisation that created the exam
+"sections": An array of different exam sections in order, each exam section is an object with this format:
+    "name": The name of this section of the exam. Do not include the section letter.
+    "instructions": The instructions provided on what to do for this section of the exam
+    "questions": An array of all of the questions in this exam section in order, each question is an array of elements.
+    "infomation": An array of elements that make up the background infomation block for this section (optional). The background infomation is typically provied for case studies. The background infomation could also be a short text for an english exam.
+
+
+This is the format for an element object:
+"type": The type of element that goes here, it can be any of these values and each different type has additional attributes depending on what it is:
+    "type": "text" An element which is a block of text
+        "text": The text of the block. Do not make text elements for question numbers or titles like "Question 1". The text will be HTML content and can can include any tags such as <b style="color: red;"></b> to format the text to make it align with the exam.
+    "type": "table" A data table that is not supposed to be written on and just provides infomation. It just has the attribute "cells" which contains a 2d array of elements
+    "type": "image" A raster image or vector diagram. It should just have the attribute "description" which provides a detailed description of the image.
+    "type": "response" An element which allows the student to answer the question. Each question must have at least response element. Background infomation must not contain response elements.
+        "bonkers": A subjective integer ranking from 0-3 of how unreasonable or bonkers this question is. A question can be considered a bonkers question due to factors like these: the answer provided by the exaimers report makes no sense or is untrue. The wording of the question is poor, ambiguous or confusing. A multiple choice question has multiple accepted answers which means that the examiners realised that one of the answers that was supposed to be wrong could actually be considered correct. The question feels like you aren't picking the correct answer but instead the least wrong answer. A rating of 0 means the question is completely reasonable and clear, 1 means it was a bit ambiguous or confusing, 2 means it was quite confusing or unclear while 3 means the question is nonsensical, stupid and looks like the examiners were drunk when they made it.
+        "comment": An optional comment for bonkers questions where the answer from the examiners report is wrong. The comment should explain why the correct answer given from the exaimers report might actually be wrong and what the true answer really should have been. An example of this is when software development examiners say that methods cannot return values, this is simply untrue and in many if not all programming languages methods can return values.
+        "difficulty": A subjective integer ranking from -1 to 8 of difficulty. The ranking should be based on the examiners report, look for key words like "this question was not answered well" and look at the answer distributions and probability. It can also be based on how hard you think the question is.
+            -1: N/A, The examiners report was not provided
+            0: Auto, The exaimers accepted all answers and awarded a mark regardless of what answer was provided.
+            1: Very Easy, The question was answered extremely well and students should not have much trouble at all, maybe even if they haven't even taken the subject before.
+            2: Easy, The question was easier than average and most students got it correct.
+            3: Normal, The question was not that bad and fairly average.
+            4: Hard, The question was a little bit harder than average but nothing too special.
+            5: Challenging, This question was not answered very well and many students struggled.
+            6: Annoying, This question was answered very poorly and the question was a little bit bonkers (requires bonkers 1 or above to select) which made it annoying to answer.
+            7: Stupid, Very few students correctly answered this question and it was a pretty stupid question that was quite bonkers (requires bonkers 2 or above to select).
+            8: Completely Bonkers, Basically nobody got this question right and if they did it was most likely dumb luck. This question is extremely infuriating and doesn't even really deserve to be on the exam (requires bonkers 3 to select).
+        "format": A single letter represending what type of response the student gives, these are the options and they each have additional attributes associated:
+            "format": "m" A multiple choice selection (single answer radio).
+                "options": An array of the choices in order as objects with this format:
+                    "correct": An optional boolean as to if this answer is one of the answers considered correct if the examiners report is provided. Do not include this attribute if the exaimers report is not present. In the examiners report this is sometimes shown within the distribution table and the percentage value of correct answers are highlighted. Otherwise it will probably outright have the letters A-D of the correct answers.
+                    "content": A single element object for the content of that option (most of the time it is just a text element)
+                    "probability": An optional float that is the probability that a random person who took the exam chose this answer out of 1. Do not include this attribute if the exaimers report is not present or the examiners report does not provide this infomation. This is normally shown in a table for the multiple choice section as a list of percentages and for example "11%" should become 0.11
+            "format": "c" A multiple choice multi answer question. The c stands for "circle" because the most common format multi answer questions appear is as a list of answers that tells you to circle all correct answers. It may also appear as a multiple choice question but if the question makes it clear that you should choose ALL correct answers then this element should be used instead. It has the same format and attributes as the above regular multiple choice but just allows multiple answers at once.
+            "format": "s" A short answer response.
+                "answer": The description of just what the correct answer from the examiners report and what marks are awarded for. Do not include this attribute if the exaimers report is not present.
+                "explaination": A descripton of why this was the correct answer. This should be in the format that if someone were to get this question wrong it would be what you would say to them to help them understand how to answer the question correctly. The exaimers report may not always have this for each question but it should be based on the answer and also use your knowledge. Do not include this attribute if the exaimers report is not present.
+                "marks": How many marks a fully correct response is worth on the exam.
+            "format": "x" An extended response. The same format and attributes as a short answer response with the only difference being that the exam provided a larger space for writing and expects a longer response and is generally worth more marks.
+            "format": "t" An incomplete table that needs to be completed by filling in cells with text answers.
+                "cells": a 2d array of objects that represent each cell, the objects have this format:
+                    "entry": A boolean for if it should be possible to enter text into this cell.
+                    "text": The optional text content of that cell, it can only be provided when entry is false. If a square is empty but should not be entered into like in the case of a two way table with a blank corner between the two sets of axis labels then entry should be false but this attribute does not need to be provided.
+                    "answer": The answer as to what should be typed into this cell. Do not include this attribute if the exaimers report is not present.
+            "format": "d" The student is requred to draw something like a diagram or a graph.
+                "answer": A description of what the student was supposed to do or draw. Do not include this attribute if the exaimers report is not present.
+
+Here is an example of a valid JSON response:

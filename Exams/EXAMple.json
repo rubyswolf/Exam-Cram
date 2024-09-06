@@ -11,17 +11,18 @@
       "questions": [
         {
           "content": [
-            { "type": "text", "text": "What colour is a carrot?" },
+            { "type": "text", "text": "What <b>colour</b> is a carrot?" },
             {
               "type": "response",
+              "bonkers": 0,
+              "difficulty": 1,
               "format": "m",
-              "choices": [
-                "Green",
-                "Banana",
-                "Orange",
-                "Carrot? I think it's uhhh... I think issss uhhh. I think it's a Carrot yuh. Carrot 'bout yuuuh. Uhh I don't know about Carrots, I don't know nuttin' 'bout dat."
-              ],
-              "answer": 3
+              "options": [
+                {"content": {"type": "text", "text": "Green"}, "correct": false, "probability": 0.02},
+                {"content": {"type": "text", "text": "Banana"}, "correct": false, "probability": 0.01},
+                {"content": {"type": "text", "text": "Orange"}, "correct": true, "probability": 0.96},
+                {"content": {"type": "text", "text": "Carrot? I think it's uhhh... I think issss uhhh. I think it's a Carrot yuh. Carrot 'bout yuuuh. Uhh I don't know about Carrots, I don't know nuttin' 'bout dat."}, "correct": false, "probability": 0.01}
+              ]
             }
           ]
         },
@@ -33,14 +34,15 @@
             },
             {
               "type": "response",
+              "bonkers": 0,
+              "difficulty": 2,
               "format": "m",
               "choices": [
-                "It's probably like, 20 feet",
-                "6 feet",
-                "6 inches",
-                "182.88 cm"
-              ],
-              "answer": [2, 4]
+                {"content": {"type": "text", "text": "It's probably like, 20 feet"}, "correct": false, "probability": 0.01},
+                {"content": {"type": "text", "text": "6 feet"}, "correct": true, "probability": 0.87},
+                {"content": {"type": "text", "text": "6 inches"}, "correct": false, "probability": 0.02},
+                {"content": {"type": "text", "text": "182.88 cm"}, "correct": true, "probability": 0.1}
+              ]
             }
           ]
         },
@@ -173,7 +175,7 @@
           "content": [
             {
               "type": "text",
-              "text": "Select all correct answers. What is a cat?"
+              "text": "Select all that apply. What is a cat?"
             },
             {
               "type": "response",
