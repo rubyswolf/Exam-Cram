@@ -27,45 +27,55 @@ function convertElement(elementObject, sectionIndex, questionIndex) {
         case "response": //Answer Response Section
             const responseDiv = document.createElement('div');
             responseDiv.className = 'response';
+            let difficulties = ["Auto", "Very Easy", "Easy", "Normal", "Hard", "Challenging", "Irritating", "Frustrating", "Infuriating"]
+            let difficultyIcon = responseDiv.appendChild(document.createElement("img"))
+            difficultyIcon.src = `./Resources/Icons/${elementObject.hasOwnProperty("difficulty")?difficulties[elementObject.difficulty]:"NA"}.svg`
+            difficultyIcon.className = "difficultyIcon";
+            responseDiv.appendChild(document.createElement("br"))
+
             switch (elementObject.format) {
                 case "m": //Multiple Choice answer
                     elementObject.options.forEach((option, optionIndex) => {
                         if (option.content.type=="text")
                         {
+                            // responseDiv.innerHTML += `
+                            //     <label>
+                            //         <input type="radio"
+                            //                 name="section-${sectionIndex}-question-${questionIndex}"
+                            //                 value="${optionIndex + 1}">
+                            //             ${String.fromCharCode(optionIndex+65)}. ${option.content.text}
+                            //     </label><br>
+                            // `;
                             responseDiv.innerHTML += `
                                 <label>
                                     <input type="radio"
                                             name="section-${sectionIndex}-question-${questionIndex}"
                                             value="${optionIndex + 1}">
-                                    ${option.content.text}
+                                        ${option.content.text}
                                 </label><br>
                             `;
                         }
                     })
                     break;
                 case "s": //Short Answer
-                    responseDiv.innerHTML += `<input type="text" name="section-${sectionIndex}-question-${questionIndex}">`;
+                    responseDiv.innerHTML += `<input type="text" class="shortAnswer" name="section-${sectionIndex}-question-${questionIndex}">`;
                     break;
                 case "x": //Extended Response
-                    responseDiv.innerHTML += `<textarea name="section-${sectionIndex}-question-${questionIndex}">`;
+                    responseDiv.innerHTML += `<textarea class="extendedResponse" name="section-${sectionIndex}-question-${questionIndex}">`;
                     break;
                 case "t": //Complete the table
-                    let tableHTML = '<table><tr>';
-                    elementObject.cells[0].forEach(cell => {
-                        tableHTML += `<th>${cell.text}</th>`;
-                    });
-                    tableHTML += '</tr>';
-                    elementObject.cells.slice(1).forEach(row => {
+                    let tableHTML = '<table>';
+                    elementObject.cells.forEach(row => {
                         tableHTML += '<tr>';
                         row.forEach((cell, cellIndex) => {
-                            if (cellIndex === 0) {
-                                tableHTML += `<td>${cell.text}</td>`;
-                            } else {
+                            if (cell.entry) {
                                 tableHTML += `
-                                    <td>
-                                        <input type="text" name="section-${sectionIndex}-question-${questionIndex}-cell-${cellIndex}">
-                                    </td>
+                                <td>
+                                <input type="text" name="section-${sectionIndex}-question-${questionIndex}-cell-${cellIndex}">
+                                </td>
                                 `;
+                            } else {
+                                tableHTML += `<th>${cell.text}</th>`;
                             }
                         });
                         tableHTML += '</tr>';
@@ -88,8 +98,13 @@ function convertElement(elementObject, sectionIndex, questionIndex) {
                         }
                     })
                     break;
+                default:
+                    console.error(`Unrecognised response type: ${elementObject.format}`)
             }
             return responseDiv;
+            default:
+                console.error(`Unrecognised element: ${elementObject.type}`)
+                console.log(elementObject)
         }
 }
 
@@ -114,6 +129,8 @@ function displayExam(data) {
         section.questions.forEach((question, questionIndex) => { //For each question
             const questionDiv = document.createElement('div');
             questionDiv.className = 'question';
+
+            questionDiv.appendChild(document.createElement("h3")).textContent = `Question ${questionIndex+1}`
 
             question.forEach((item, itemIndex) => { //Load the question contents
                 questionDiv.appendChild(convertElement(item, sectionIndex, questionIndex))

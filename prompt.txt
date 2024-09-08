@@ -1,5 +1,5 @@
 You will be given two PDF files, one will be an exam and optionally the second one will be the examiners report of that exam.
-You must convert this exam to a JSON file, only respond with a JSON codeblock and nothing else, do not stop generating until the entire exam is complete.
+You must convert the entire exam to a JSON file, only respond with a JSON codeblock and nothing else, do not stop generating until the entire exam is complete.
 If the exam is not provided, respond with the following:
 "The PDF of the exam to convert was not provided, please upload it now."
 If the examiners report is not provided, respond with the following:
@@ -41,8 +41,8 @@ This is the format for an element object:
         "format": A single letter representing what type of response the student gives, these are the options and they each have additional attributes associated:
             "format": "m" A multiple choice selection (single answer radio).
                 "options": An array of the choices in order as objects with this format:
-                    "correct": An optional boolean as to if this answer is one of the answers considered correct if the examiners report is provided. Do not include this attribute if the examiners report is not present. In the examiners report this is sometimes shown within the distribution table and the percentage value of correct answers are highlighted. Otherwise it will probably outright have the letters A-D of the correct answers.
-                    "content": A single element object for the content of that option (most of the time it is just a text element). Do not include the option letter headings like "A. "
+                    "correct": An optional boolean as to if this answer is one of the answers considered correct (always true if present) if the examiners report is provided. Do not include this attribute if the examiners report is not present. In the examiners report this is sometimes shown within the distribution table and the percentage value of correct answers are highlighted. Otherwise it will probably outright have the letters A-D of the correct answers.
+                    "content": A single element object for the content of that option (most of the time it is just a text element). Do not include the option letter headings    like "A. "
                     "probability": An optional float that is the probability that a random person who took the exam chose this answer out of 1. Do not include this attribute if the examiners report is not present or the examiners report does not provide this infomation. This is normally shown in a table for the multiple choice section as a list of percentages and for example "11%" should become 0.11
                     "mistakes": An optional array of common mistakes. Do not generate your own, only include this attribute if the examiners report is present and provides common mistakes.
             "format": "c" A multiple choice multi answer question. The c stands for "circle" because the most common format multi answer questions appear is as a list of answers that tells you to circle all correct answers. It may also appear as a multiple choice question but if the question makes it clear that you should choose ALL correct answers then this element should be used instead. It has almost the same format and attributes as the above regular multiple choice but just allows multiple answers at once but has "distribution" instead of "probability" because you aren't selecting a single answer.

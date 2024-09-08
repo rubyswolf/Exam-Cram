@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exam Tool</title>
     <style>
-        body { font-family: Arial, sans-serif; }
+        body { font-family: Arial, sans-serif; background-color: #131525; color: #f2f9ff;}
         .container { max-width: 800px; margin: auto; }
         .section { margin-bottom: 20px; }
         .question { margin-bottom: 10px; }
-        .response { margin-bottom: 15px; }
+        .response { margin-bottom: 15px; border: #9c9c9c 4px outset; padding: 7px; width: fit-content;}
         table { border-collapse: collapse; }
-        table, th, td { border: 1px solid black; }
-        td:not(:has(input)) {padding: 5px; text-align: center;}
-        td > input {width: 160px;height: 25px;border: none;}
-        input[type="radio"], input[type="checkbox"] { margin-right: 10px; }
+        table, th, td {border: #9c9c9c 2px solid; }
+        th {padding: 5px; text-align: center; background: #0006;}
+        td > input {width: 160px;height: 25px;border: none; background: #ffffff4d;}
+        input[type="radio"], input[type="checkbox"] { margin-right: 5px; }
+        .difficultyIcon {width: 64px;}
+        .shortAnswer {width: 200px;height: 20px;}
+        .extendedResponse {width: 500px;min-height: 20px;min-width: 200px;}
     </style>
 </head>
 <body>

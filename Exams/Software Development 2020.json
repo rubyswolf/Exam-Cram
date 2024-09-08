@@ -1,0 +1,685 @@
+{
+  "title": "2020 Software Development Exam",
+  "subject": "Applied Computing: Software Development",
+  "year": 2020,
+  "northernHemisphere": false,
+  "author": "Victorian Curriculum and Assessment Authority",
+  "sections": [
+    {
+      "name": "Multiple-choice questions",
+      "instructions": "Answer all questions in pencil on the answer sheet provided for multiple-choice questions. Choose the response that is correct or that best answers the question. A correct answer scores 1; an incorrect answer scores 0. Marks will not be deducted for incorrect answers. No marks will be given if more than one answer is completed for any question.",
+      "questions": [
+        [
+          {
+            "type": "text",
+            "text": "The most appropriate data type to store a value that reflects the length of a window frame in millimetres is"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              { "content": { "type": "text", "text": "string" } },
+              {
+                "content": { "type": "text", "text": "integer" },
+                "correct": true
+              },
+              { "content": { "type": "text", "text": "Boolean" } },
+              { "content": { "type": "text", "text": "floating point" } }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "Which one of the following is a suitable technique for documenting this need or opportunity?"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "making a journal entry"
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "writing a problem statement"
+                },
+                "correct": true
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "maintaining a log or annotations"
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "completing a software requirements specification (SRS)"
+                }
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "An appropriate way for Ruby to determine the solution constraints for this project is to"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "find out how students are using the current canteen technology."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "research an online shopping environment to gather design ideas."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "interview students to find out what new products should be stocked."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "check the available product list against the school's 'healthy eating' policy to identify a new product list."
+                },
+                "correct": true
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "Which search algorithm would be the best choice if the canteen staff want the fastest option?"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "quick search, if the list is sorted"
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "linear search, if the list is unsorted"
+                },
+                "correct": true
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "binary search, if the list is unsorted"
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "selection search, if the list is sorted"
+                }
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "Which set of test data should be used to check a validation rule that limits all item prices to values between 50 cents and $8.00?"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "0.49, 0.50, 0.51, 8.00, 8.01"
+                },
+                "correct": true
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "0, 49, 50, 51, 79, 80, 81"
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "0.4, 0.5, 0.8, 0.9"
+                }
+              },
+              { "content": { "type": "text", "text": "0, 50, 8, 9" } }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "Assuming that time is not a constraint, which one of the following is the most appropriate technique to collect detailed and authentic data about an existing information system?"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              { "content": { "type": "text", "text": "reports" } },
+              { "content": { "type": "text", "text": "surveys" } },
+              { "content": { "type": "text", "text": "interviews" } },
+              {
+                "content": { "type": "text", "text": "observations" },
+                "correct": true
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "Having a limited amount of time to complete a software solution is an example of"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "a usability constraint."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "an economic constraint."
+                },
+                "correct": true
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "a technical requirement."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "a non-functional requirement."
+                }
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "What is the word that is missing from the use case diagram indicated by <<___>> next to each dashed arrow?"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              { "content": { "type": "text", "text": "'actor'" } },
+              { "content": { "type": "text", "text": "'extends'" } },
+              {
+                "content": { "type": "text", "text": "'includes'" },
+                "correct": true
+              },
+              { "content": { "type": "text", "text": "'initiates'" } }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "After an SRS has been completed, designs need to be created. Which of the following are valid techniques for generating different design ideas?"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "algorithms and mock-ups"
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "mind maps and pseudocode"
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "brainstorming and mind maps"
+                },
+                "correct": true
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "mock-ups and data dictionaries"
+                }
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "Richard is designing a software solution that will require users to register before they can use the solution. Once registered, they will need to interact with the solution using a variety of devices and operating systems that will in turn be used with another software solution. The most important design factors Richard should consider are"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "affordance and security."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "usability and interoperability."
+                },
+                "correct": true
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "marketability and affordance."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "interoperability and marketability."
+                }
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "An organisation disposed of files in January 2019. In November 2020 those files"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "cannot be recovered."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "can be recovered from archives."
+                },
+                "correct": true
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "can be recovered from desktop trash."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "can be recovered from backups stored offsite."
+                }
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "To upload each of Wesley's 5 MB photographs using a wireless connection running at 20 megabits per second will take approximately"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              { "content": { "type": "text", "text": "0.8 seconds." } },
+              {
+                "content": { "type": "text", "text": "1.3 seconds." },
+                "correct": true
+              },
+              { "content": { "type": "text", "text": "2.0 seconds." } },
+              { "content": { "type": "text", "text": "2.7 seconds." } }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "Which one of the following is the name of the data structure shown for storing member names, gender, age groups, preferred run length, and best time?"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": { "type": "text", "text": "record" },
+                "correct": true
+              },
+              { "content": { "type": "text", "text": "hash table" } },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "one-dimensional array"
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "two-dimensional array"
+                }
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "What is the output of the pseudocode where A starts at 7 and B starts at 1, and A is decreased while B is increased in a loop?"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              { "content": { "type": "text", "text": "7" } },
+              { "content": { "type": "text", "text": "12" } },
+              {
+                "content": { "type": "text", "text": "15" },
+                "correct": true
+              },
+              { "content": { "type": "text", "text": "16" } }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "The type of validation to check that the user has entered only positive numbers for variables A and B is called"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              { "content": { "type": "text", "text": "fact checking." } },
+              { "content": { "type": "text", "text": "type checking." } },
+              {
+                "content": { "type": "text", "text": "range checking." },
+                "correct": true
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "existence checking."
+                }
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "When developing a software solution, the data used for testing validation, including range checks and type checks, would include"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "correct and incorrect data."
+                },
+                "correct": true
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "incorrect data only."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "correct data only."
+                }
+              },
+              { "content": { "type": "text", "text": "symbols only." } }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "Apart from changing his password, what could Remi have done to prevent the third-party applications from sharing his data?"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": { "type": "text", "text": "set up a firewall" }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "read the terms and conditions"
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "installed antivirus software and run it frequently"
+                },
+                "correct": true
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "checked reviews online to see if other users had issues"
+                }
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "Which one of the following would be a suitable criterion for evaluating the efficiency of a software solution?"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "The solution's appearance is attractive."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "The solution generates accurate results."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "The final output has all the required components."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "The solution requires fewer steps to complete tasks."
+                },
+                "correct": true
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "Version control is used in software development to"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "help developers keep track of the correct version."
+                },
+                "correct": true
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "make sure there are multiple versions to present to clients."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "fully test solutions to ensure functional requirements are met."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "preserve older versions of software solutions in case developers need to refer to them."
+                }
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "Cross-site scripting occurs when a"
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "website accesses another website."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "web browser becomes infected with malware."
+                }
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "web application delivers malicious script to the user's web browser."
+                },
+                "correct": true
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "web server returns exception errors, such as internal server errors."
+                }
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Case study",
+      "instructions": "Please remove the insert from the centre of this book during reading time. Use the case study provided in the insert to answer the questions in this section. Answers must apply to the case study. Answer all questions in the spaces provided.",
+      "questions": [
+        [
+          {
+            "type": "text",
+            "text": "Identify one information system goal of the FRIDGESMART app."
+          },
+          {
+            "type": "response",
+            "format": "s",
+            "bonkers": 0,
+            "marks": 1,
+            "answer": "To provide efficient ordering of HOMEMADE products.",
+            "distribution": [0.58, 0.42]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "Justify why John has selected an agile development model rather than a waterfall development model for the development of the app."
+          },
+          {
+            "type": "response",
+            "format": "x",
+            "bonkers": 0,
+            "marks": 4,
+            "answer": "The iterative nature of the agile model allows for feedback to be incorporated into the development process. This is more suitable for the FRIDGESMART app, as it allows John to adapt to the needs of the client after each sprint.",
+            "distribution": [0.26, 0.22, 0.3, 0.17, 0.06]
+          }
+        ]
+      ]
+    }
+  ]
+}
