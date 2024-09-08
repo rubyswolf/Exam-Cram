@@ -13,6 +13,8 @@ Exams can be taken in various modes:
     - Get immediate feedback after each question and learn what the correct answer was and why
 
 ## How to digitze existing exams
+First aquire a PDF of the exam and examiners report (if possible). [Here's a great place to find Victorian exams](https://atar.rocks/vce/)
+
 To convert an exam into the correct JSON format you can go to [ChatGPT](https://chatgpt.com/) and use model 4o to convert the exam. Simply upload the exam PDF and the examiners report PDF if avalible and paste in the prompt provided in prompt.txt. For long exams you may need to occasionally press "Keep Generating" to get the model to keep outputing the JSON data. Then create a new .json file in the exams folder and paste in the output from ChatGPT.
 
 ## How to generate new exams

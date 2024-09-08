@@ -14,6 +14,85 @@ function handleFileUpload(event) {
     }
 }
 
+function convertElement(elementObject, sectionIndex, questionIndex) {
+    switch (elementObject.type)
+    {
+        case "text": //Text Section
+            let element = document.createElement("p")
+            element.innerHTML = elementObject.text
+            return element
+        case "image":
+            console.warn("Image found")
+            break;
+        case "response": //Answer Response Section
+            const responseDiv = document.createElement('div');
+            responseDiv.className = 'response';
+            switch (elementObject.format) {
+                case "m": //Multiple Choice answer
+                    elementObject.options.forEach((option, optionIndex) => {
+                        if (option.content.type=="text")
+                        {
+                            responseDiv.innerHTML += `
+                                <label>
+                                    <input type="radio"
+                                            name="section-${sectionIndex}-question-${questionIndex}"
+                                            value="${optionIndex + 1}">
+                                    ${option.content.text}
+                                </label><br>
+                            `;
+                        }
+                    })
+                    break;
+                case "s": //Short Answer
+                    responseDiv.innerHTML += `<input type="text" name="section-${sectionIndex}-question-${questionIndex}">`;
+                    break;
+                case "x": //Extended Response
+                    responseDiv.innerHTML += `<textarea name="section-${sectionIndex}-question-${questionIndex}">`;
+                    break;
+                case "t": //Complete the table
+                    let tableHTML = '<table><tr>';
+                    elementObject.cells[0].forEach(cell => {
+                        tableHTML += `<th>${cell.text}</th>`;
+                    });
+                    tableHTML += '</tr>';
+                    elementObject.cells.slice(1).forEach(row => {
+                        tableHTML += '<tr>';
+                        row.forEach((cell, cellIndex) => {
+                            if (cellIndex === 0) {
+                                tableHTML += `<td>${cell.text}</td>`;
+                            } else {
+                                tableHTML += `
+                                    <td>
+                                        <input type="text" name="section-${sectionIndex}-question-${questionIndex}-cell-${cellIndex}">
+                                    </td>
+                                `;
+                            }
+                        });
+                        tableHTML += '</tr>';
+                    });
+                    tableHTML += '</table>';
+                    responseDiv.innerHTML += tableHTML;
+                    break;
+                case "c": //Circle the correct answers (Multi select)
+                    elementObject.options.forEach((option, optionIndex) => {
+                        if (option.content.type=="text")
+                        {
+                            responseDiv.innerHTML += `
+                                <label>
+                                    <input type="checkbox"
+                                            name="section-${sectionIndex}-question-${questionIndex}"
+                                            value="${optionIndex + 1}">
+                                    ${option.content.text}
+                                </label><br>
+                            `;
+                        }
+                    })
+                    break;
+            }
+            return responseDiv;
+        }
+}
+
 function displayExam(data) {
     const examContent = document.getElementById('examContent');
     examContent.innerHTML = `
@@ -36,74 +115,8 @@ function displayExam(data) {
             const questionDiv = document.createElement('div');
             questionDiv.className = 'question';
 
-            question.content.forEach((item, itemIndex) => { //Load the question contents
-                switch (item.type)
-                {
-                    case "text": //Text Section
-                        questionDiv.innerHTML += `<p>${item.text}</p>`;
-                        break;
-                    case "response": //Answer Response Section
-                        const responseDiv = document.createElement('div');
-                        responseDiv.className = 'response';
-                        switch (item.format) {
-                            case "m": //Multiple Choice answer
-                                item.choices.forEach((choice, choiceIndex) => {
-                                    responseDiv.innerHTML += `
-                                        <label>
-                                            <input type="radio"
-                                                    name="section-${sectionIndex}-question-${questionIndex}"
-                                                    value="${choiceIndex + 1}">
-                                            ${choice}
-                                        </label><br>
-                                    `;
-                                })
-                                break;
-                            case "s": //Short Answer
-                                responseDiv.innerHTML += `<input type="text" name="section-${sectionIndex}-question-${questionIndex}">`;
-                                break;
-                            case "x": //Extended Response
-                                responseDiv.innerHTML += `<textarea name="section-${sectionIndex}-question-${questionIndex}">`;
-                                break;
-                            case "t": //Complete the table
-                                let tableHTML = '<table><tr>';
-                                item.cells[0].forEach(cell => {
-                                    tableHTML += `<th>${cell.text}</th>`;
-                                });
-                                tableHTML += '</tr>';
-                                item.cells.slice(1).forEach(row => {
-                                    tableHTML += '<tr>';
-                                    row.forEach((cell, cellIndex) => {
-                                        if (cellIndex === 0) {
-                                            tableHTML += `<td>${cell.text}</td>`;
-                                        } else {
-                                            tableHTML += `
-                                                <td>
-                                                    <input type="text" name="section-${sectionIndex}-question-${questionIndex}-cell-${cellIndex}">
-                                                </td>
-                                            `;
-                                        }
-                                    });
-                                    tableHTML += '</tr>';
-                                });
-                                tableHTML += '</table>';
-                                responseDiv.innerHTML += tableHTML;
-                                break;
-                            case "c": //Circle the correct answers (Multi select)
-                                item.options.forEach((option, optionIndex) => {
-                                    responseDiv.innerHTML += `
-                                        <label>
-                                            <input type="checkbox"
-                                                    name="section-${sectionIndex}-question-${questionIndex}"
-                                                    value="${optionIndex + 1}">
-                                            ${option.text}
-                                        </label><br>
-                                    `;
-                                })
-                                break;
-                        }
-                        questionDiv.appendChild(responseDiv);
-                        break;
-                    }
+            question.forEach((item, itemIndex) => { //Load the question contents
+                questionDiv.appendChild(convertElement(item, sectionIndex, questionIndex))
             });
 
             sectionDiv.appendChild(questionDiv);

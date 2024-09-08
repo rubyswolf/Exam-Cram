@@ -3,12 +3,12 @@ You must convert this exam to a JSON file, only respond with a JSON codeblock an
 If the exam is not provided, respond with the following:
 "The PDF of the exam to convert was not provided, please upload it now."
 If the examiners report is not provided, respond with the following:
-"The exaimers report for this exam has not been provided, please upload it now or just type 'continue' to continue without it."
+"The examiners report for this exam has not been provided, please upload it now or just type 'continue' to continue without it."
 
 The JSON format to convert the exam to is as follows:
 The main object has these properties:
 "title": The name or title of the exam
-"subject": The subect the exam is on
+"subject": The subject the exam is on
 "year": The year that the exam is dated with
 "northernHemisphere": If the exam was made for the northern hemisphere (if the exam has "NHT" on it)
 "author": The person or organisation that created the exam
@@ -16,47 +16,350 @@ The main object has these properties:
     "name": The name of this section of the exam. Do not include the section letter.
     "instructions": The instructions provided on what to do for this section of the exam
     "questions": An array of all of the questions in this exam section in order, each question is an array of elements.
-    "infomation": An array of elements that make up the background infomation block for this section (optional). The background infomation is typically provied for case studies. The background infomation could also be a short text for an english exam.
+    "infomation": An array of elements that make up the background information block for this section (optional). The background infomation is typically provided for case studies. The background infomation could also be a short text for an english exam.
 
 
 This is the format for an element object:
 "type": The type of element that goes here, it can be any of these values and each different type has additional attributes depending on what it is:
     "type": "text" An element which is a block of text
-        "text": The text of the block. Do not make text elements for question numbers or titles like "Question 1". The text will be HTML content and can can include any tags such as <b style="color: red;"></b> to format the text to make it align with the exam.
+        "text": The text of the block. Do not make text elements for question numbers or titles like "Question 1". The text will be HTML content and can include any tags such as <b style="color: red;"></b> to format the text to make it align with the exam.
     "type": "table" A data table that is not supposed to be written on and just provides infomation. It just has the attribute "cells" which contains a 2d array of elements
     "type": "image" A raster image or vector diagram. It should just have the attribute "description" which provides a detailed description of the image.
     "type": "response" An element which allows the student to answer the question. Each question must have at least response element. Background infomation must not contain response elements.
-        "bonkers": A subjective integer ranking from 0-3 of how unreasonable or bonkers this question is. A question can be considered a bonkers question due to factors like these: the answer provided by the exaimers report makes no sense or is untrue. The wording of the question is poor, ambiguous or confusing. A multiple choice question has multiple accepted answers which means that the examiners realised that one of the answers that was supposed to be wrong could actually be considered correct. The question feels like you aren't picking the correct answer but instead the least wrong answer. A rating of 0 means the question is completely reasonable and clear, 1 means it was a bit ambiguous or confusing, 2 means it was quite confusing or unclear while 3 means the question is nonsensical, stupid and looks like the examiners were drunk when they made it.
-        "comment": An optional comment for bonkers questions where the answer from the examiners report is wrong. The comment should explain why the correct answer given from the exaimers report might actually be wrong and what the true answer really should have been. An example of this is when software development examiners say that methods cannot return values, this is simply untrue and in many if not all programming languages methods can return values.
-        "difficulty": A subjective integer ranking from -1 to 8 of difficulty. The ranking should be based on the examiners report, look for key words like "this question was not answered well" and look at the answer distributions and probability. It can also be based on how hard you think the question is.
-            -1: N/A, The examiners report was not provided
-            0: Auto, The exaimers accepted all answers and awarded a mark regardless of what answer was provided.
+        "bonkers": A subjective integer ranking from 0-3 of how unreasonable or bonkers this question is. A question can be considered a bonkers question due to factors like these: the answer provided by the examiners report makes no sense or is untrue. The wording of the question is poor, ambiguous or confusing. A multiple choice question has multiple accepted answers which means that the examiners realised that one of the answers that was supposed to be wrong could actually be considered correct. The question feels like you aren't picking the correct answer but instead the least wrong answer. A rating of 0 means the question is completely reasonable and clear, 1 means it was a bit ambiguous or confusing, 2 means it was quite confusing or unclear while 3 means the question is nonsensical, stupid and looks like the examiners were drunk when they made it.
+        "comment": An optional comment for bonkers questions to explain what should have been changed about it to make it reasonable. This could be an explanation why the correct answer given from the examiners report might actually be wrong and what the true answer really should have been, or what should've been changed about the question itself to make it more clear. An example of this is when software development examiners say that methods cannot return values, this is simply untrue and in many if not all programming languages methods can return values.
+        "difficulty": A mostly subjective integer ranking from 0 to 8 of difficulty. Do not include this attribute if the examiners report is not present. The ranking should be based on the examiners report, look for key words like "this question was not answered well" and look at the answer distributions and probability. It can also be based on how hard you think the question is.
+            0: Auto, The examiners accepted all answers and awarded a mark regardless of what answer was provided.
             1: Very Easy, The question was answered extremely well and students should not have much trouble at all, maybe even if they haven't even taken the subject before.
             2: Easy, The question was easier than average and most students got it correct.
             3: Normal, The question was not that bad and fairly average.
             4: Hard, The question was a little bit harder than average but nothing too special.
-            5: Challenging, This question was not answered very well and many students struggled.
-            6: Annoying, This question was answered very poorly and the question was a little bit bonkers (requires bonkers 1 or above to select) which made it annoying to answer.
-            7: Stupid, Very few students correctly answered this question and it was a pretty stupid question that was quite bonkers (requires bonkers 2 or above to select).
-            8: Completely Bonkers, Basically nobody got this question right and if they did it was most likely dumb luck. This question is extremely infuriating and doesn't even really deserve to be on the exam (requires bonkers 3 to select).
-        "format": A single letter represending what type of response the student gives, these are the options and they each have additional attributes associated:
+            5: Challenging, This question was not answered very well and many students struggled. If MOST students got the question wrong you must select Challenging or above. However having most students get it wrong is not a requirement to select Challenging or above, it is still allowed to be selected even if most students got it right if the question was sufficiently challenging.
+            6: Irritating, This question was answered very poorly and the question was a little bit bonkers (requires bonkers 1 or above to select) which made it annoying to answer.
+            7: Frustrating, Very few students correctly answered this question and it was a pretty stupid question that was quite bonkers (requires bonkers 2 or above to select).
+            8: Infuriating, Basically nobody got this question right and if they did it was most likely dumb luck. This question doesn't even really deserve to be on the exam (requires bonkers 3 to select).
+        "format": A single letter representing what type of response the student gives, these are the options and they each have additional attributes associated:
             "format": "m" A multiple choice selection (single answer radio).
                 "options": An array of the choices in order as objects with this format:
-                    "correct": An optional boolean as to if this answer is one of the answers considered correct if the examiners report is provided. Do not include this attribute if the exaimers report is not present. In the examiners report this is sometimes shown within the distribution table and the percentage value of correct answers are highlighted. Otherwise it will probably outright have the letters A-D of the correct answers.
-                    "content": A single element object for the content of that option (most of the time it is just a text element)
-                    "probability": An optional float that is the probability that a random person who took the exam chose this answer out of 1. Do not include this attribute if the exaimers report is not present or the examiners report does not provide this infomation. This is normally shown in a table for the multiple choice section as a list of percentages and for example "11%" should become 0.11
-            "format": "c" A multiple choice multi answer question. The c stands for "circle" because the most common format multi answer questions appear is as a list of answers that tells you to circle all correct answers. It may also appear as a multiple choice question but if the question makes it clear that you should choose ALL correct answers then this element should be used instead. It has the same format and attributes as the above regular multiple choice but just allows multiple answers at once.
+                    "correct": An optional boolean as to if this answer is one of the answers considered correct if the examiners report is provided. Do not include this attribute if the examiners report is not present. In the examiners report this is sometimes shown within the distribution table and the percentage value of correct answers are highlighted. Otherwise it will probably outright have the letters A-D of the correct answers.
+                    "content": A single element object for the content of that option (most of the time it is just a text element). Do not include the option letter headings like "A. "
+                    "probability": An optional float that is the probability that a random person who took the exam chose this answer out of 1. Do not include this attribute if the examiners report is not present or the examiners report does not provide this infomation. This is normally shown in a table for the multiple choice section as a list of percentages and for example "11%" should become 0.11
+                    "mistakes": An optional array of common mistakes. Do not generate your own, only include this attribute if the examiners report is present and provides common mistakes.
+            "format": "c" A multiple choice multi answer question. The c stands for "circle" because the most common format multi answer questions appear is as a list of answers that tells you to circle all correct answers. It may also appear as a multiple choice question but if the question makes it clear that you should choose ALL correct answers then this element should be used instead. It has almost the same format and attributes as the above regular multiple choice but just allows multiple answers at once but has "distribution" instead of "probability" because you aren't selecting a single answer.
             "format": "s" A short answer response.
-                "answer": The description of just what the correct answer from the examiners report and what marks are awarded for. Do not include this attribute if the exaimers report is not present.
-                "explaination": A descripton of why this was the correct answer. This should be in the format that if someone were to get this question wrong it would be what you would say to them to help them understand how to answer the question correctly. The exaimers report may not always have this for each question but it should be based on the answer and also use your knowledge. Do not include this attribute if the exaimers report is not present.
+                "answer": The description of just what the correct answer from the examiners report and what marks are awarded for. Do not include this attribute if the examiners report is not present.
+                "explanation": A descripton of why this was the correct answer. This should be in the format that if someone were to get this question wrong it would be what you would say to them to help them understand how to answer the question correctly. The examiners report may not always have this for each question but it should be based on the answer and also use your knowledge. Do not include this attribute if the examiners report is not present.
+                "examples": An optional array of example responses. Do not generate your own example responses, only include this attribute if the examiners report is present and provides example responses for this question.
+                "mistakes": Same as before
                 "marks": How many marks a fully correct response is worth on the exam.
-            "format": "x" An extended response. The same format and attributes as a short answer response with the only difference being that the exam provided a larger space for writing and expects a longer response and is generally worth more marks.
+                "distribution": An array of the probability out of 1 of a student getting a certain number of marks corresponding to the index of that array item (0 indexed). The length of the array should be the number of marks +1 (since it's 0 indexed as students may get 0 marks).  Do not include this attribute if the examiners report is not present or the examiners report does not provide this infomation. This is typically shown in a table that goes from 0 to the maximum number of marks.
+                "unit": An optional attribute that only applies to short answer and not extended response. For answers that have a specified unit associated with them like in physics exams where they expect a force and the box contains "N", then this should be set to "N". If the question says something like include an appropriate unit then do not include this attribute.
+            "format": "x" An extended response. Almost the same format and attributes as a short answer response but with an additional optional boolean "math" (which should only be true if present) which flags the response as being math so that the input is in LaTeX. Extended response should not include the "unit" attribute as typically in a "show your working" section, you have an extended response for working and then at the end would have a short answer box which may have a unit. The main difference is that the exam provided a larger space for writing and expects a longer response and is generally worth more marks.
             "format": "t" An incomplete table that needs to be completed by filling in cells with text answers.
+                "mistakes": Same as before
+                "marks": Same as before
+                "distribution": Same as before
                 "cells": a 2d array of objects that represent each cell, the objects have this format:
-                    "entry": A boolean for if it should be possible to enter text into this cell.
+                    "entry": A boolean indicating whether it should be possible to enter text into this cell.
                     "text": The optional text content of that cell, it can only be provided when entry is false. If a square is empty but should not be entered into like in the case of a two way table with a blank corner between the two sets of axis labels then entry should be false but this attribute does not need to be provided.
-                    "answer": The answer as to what should be typed into this cell. Do not include this attribute if the exaimers report is not present.
-            "format": "d" The student is requred to draw something like a diagram or a graph.
-                "answer": A description of what the student was supposed to do or draw. Do not include this attribute if the exaimers report is not present.
+                    "answer": The answer as to what should be typed into this cell. Do not include this attribute if the examiners report is not present.
+            "format": "d" The student is required to draw something like a diagram or a graph.
+                "mistakes": Same as before
+                "marks": Same as before
+                "distribution": Same as before
+                "answer": A description of what the student was supposed to do or draw. Do not include this attribute if the examiners report is not present.
 
 Here is an example of a valid JSON response:
+{
+  "title": "EXAMple Exam (Get it?)",
+  "subject": "Complex Problems and Riddles",
+  "year": 2024,
+  "northernHemisphere": false,
+  "author": "Dart Spark",
+  "sections": [
+    {
+      "name": "Complex Problem Multiple-choice",
+      "instructions": "Answer <b>all</b> questions in pencil on the answer sheet provided for multiple-choice questions.\nChoose the response that is <b>correct</b> or that <b>best answers</b> the question.\nA correct answer scores 1; an incorrect answer scores 0.\nMarks will <b>not</b> be deducted for incorrect answers.\nNo marks will be given if more than one answer is completed for any question.",
+      "questions": [
+        [
+          { "type": "text", "text": "What <b>colour</b> is a carrot?" },
+          {
+            "type": "response",
+            "bonkers": 0,
+            "difficulty": 1,
+            "format": "m",
+            "options": [
+              {
+                "content": { "type": "text", "text": "Green" },
+                "correct": false,
+                "probability": 0.02
+              },
+              {
+                "content": { "type": "text", "text": "Banana" },
+                "correct": false,
+                "probability": 0.01
+              },
+              {
+                "content": { "type": "text", "text": "Orange" },
+                "correct": true,
+                "probability": 0.96
+              },
+              {
+                "content": {
+                  "type": "text",
+                  "text": "Carrot? I think it's uhhh... I think issss uhhh. I think it's a Carrot yuh. Carrot 'bout yuuuh. Uhh I don't know about Carrots, I don't know nuttin' 'bout dat."
+                },
+                "correct": false,
+                "probability": 0.01
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "If you dig a 6 foot hole, how deep is that hole?"
+          },
+          {
+            "type": "response",
+            "bonkers": 0,
+            "difficulty": 2,
+            "format": "m",
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "It's probably like, 20 feet"
+                },
+                "correct": false,
+                "probability": 0.01
+              },
+              {
+                "content": { "type": "text", "text": "6 feet" },
+                "correct": true,
+                "probability": 0.87
+              },
+              {
+                "content": { "type": "text", "text": "6 inches" },
+                "correct": false,
+                "probability": 0.02
+              },
+              {
+                "content": { "type": "text", "text": "182.88 cm" },
+                "correct": true,
+                "probability": 0.1
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "1-1="
+          },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "difficulty": 1,
+            "options": [
+              {
+                "content": { "type": "text", "text": "1" },
+                "correct": false,
+                "probability": 0.01
+              },
+              {
+                "content": { "type": "text", "text": "1÷0" },
+                "correct": false,
+                "probability": 0.01
+              },
+              {
+                "content": { "type": "text", "text": "Equals? 35" },
+                "correct": false,
+                "probability": 0.02
+              },
+              {
+                "content": { "type": "text", "text": "0" },
+                "correct": true,
+                "probability": 0.96
+              }
+            ]
+          }
+        ],
+        [
+          { "type": "text", "text": "What is a BMW?" },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "difficulty": 4,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "A company called Bayerische Motoren Werke"
+                },
+                "correct": false,
+                "probability": 0.1
+              },
+              {
+                "content": { "type": "text", "text": "A BMW is a car" },
+                "correct": true,
+                "probability": 0.64
+              },
+              {
+                "content": { "type": "text", "text": "An acronym" },
+                "correct": false,
+                "probability": 0.06
+              },
+              {
+                "content": { "type": "text", "text": "All of the above" },
+                "correct": false,
+                "probability": 0.2
+              }
+            ]
+          },
+          { "type": "text", "text": "Spell BMW" },
+          {
+            "type": "response",
+            "format": "m",
+            "bonkers": 0,
+            "difficulty": 3,
+            "options": [
+              {
+                "content": {
+                  "type": "text",
+                  "text": "Bayerische Motoren Werke"
+                },
+                "correct": false,
+                "probability": 0.13
+              },
+              {
+                "content": { "type": "text", "text": "DY" },
+                "correct": false,
+                "probability": 0.02
+              },
+              {
+                "content": { "type": "text", "text": "Bee em double you" },
+                "correct": false,
+                "probability": 0.1
+              },
+              {
+                "content": { "type": "text", "text": "BMW" },
+                "correct": true,
+                "probability": 0.75
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Riddles",
+      "instructions": "Answer <b>all</b> questions in the spaces provided.",
+      "questions": [
+        [
+          {
+            "type": "text",
+            "text": "What can run but never walks, has a mouth but never talks, has a head but never weeps, has a bed but never sleeps?"
+          },
+          {
+            "type": "response",
+            "format": "s",
+            "bonkers": 0,
+            "difficulty": 5,
+            "answer": "River",
+            "explanation": "The water of a River runs so a River can run but Rivers cannot walk.\nRivers always lead to the sea and the point where they meet the sea is called its mouth but Rivers cannot talk.\nThe start of a River is called a head but a River cannot literally weep. The base at the bottom of a River is called a riverbed so a River has a bed but it cannot sleep.",
+            "marks": 1,
+            "distribution": [0.6, 0.4]
+          },
+          {
+            "type": "text",
+            "text": "Using the answer from the previous question, identify and define what a 'Bank' is in this context."
+          },
+          {
+            "type": "response",
+            "format": "x",
+            "bonkers": 0,
+            "difficulty": 3,
+            "answer": "Students were awarded a mark for identifying that it would mean a 'Riverbank' and one for giving an accurate definition of a Riverbank.",
+            "explanation": "In the context of a River, a 'bank' would refer to a Riverbank which is the land at either edge of a river.",
+            "examples": [
+              "A bank would refer to a Riverbank which is the part where the water of the River meets land."
+            ],
+            "marks": 2,
+            "distribution": [0.41, 0.23, 0.36]
+          }
+        ]
+      ]
+    },
+    {
+      "name": "Difficult questions",
+      "instructions": "Answer <b>all</b> questions as instructed.",
+      "questions": [
+        [
+          {
+            "type": "text",
+            "text": "Fill in the two way table with either 'True' or 'False' for each square"
+          },
+          {
+            "type": "response",
+            "format": "t",
+            "bonkers": 1,
+            "comment": "Juice can refer to many different things and not necessarily fruit Juice. The table should have specified 'Fruit Juice' rather than just 'Juice' to make it clearer",
+            "difficulty": 3,
+            "marks": 3,
+            "cells": [
+              [
+                { "entry": false, "text": "Item" },
+                { "entry": false, "text": "Is fruit" },
+                { "entry": false, "text": "Is liquid" }
+              ],
+              [
+                { "entry": false, "text": "Juice" },
+                { "entry": true, "answer": "True" },
+                { "entry": true, "answer": "True" }
+              ],
+              [
+                { "entry": false, "text": "Orange" },
+                { "entry": true, "answer": "True" },
+                { "entry": true, "answer": "False" }
+              ],
+              [
+                { "entry": false, "text": "Water" },
+                { "entry": true, "answer": "False" },
+                { "entry": true, "answer": "True" }
+              ],
+              [
+                {
+                  "entry": false,
+                  "text": "Boeing AH-64 Apache Attack Helicopter"
+                },
+                { "entry": true, "answer": "False" },
+                { "entry": true, "answer": "False" }
+              ]
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "text": "Select all that apply. What is a cat?"
+          },
+          {
+            "type": "response",
+            "format": "c",
+            "bonkers": 0,
+            "difficulty": 2,
+            "distribution": [0.14, 0.86],
+            "options": [
+              {"content": {"type": "text", "text": "Cute"}, "correct": true },
+              {"content": {"type": "text", "text": "A feline"}, "correct": true },
+              {"content": {"type": "text", "text": "A type of dog"}, "correct": false }
+            ]
+          }
+        ]
+      ]
+    }
+  ]
+}
