@@ -122,7 +122,7 @@ function displayExam(data) {
         const sectionDiv = document.createElement('div');
         sectionDiv.className = 'section';
         sectionDiv.innerHTML = `
-            <h3>${section.name}</h3>
+            <h2>Section ${String.fromCharCode(sectionIndex+65)}: ${section.name}</h2>
             <p>${section.instructions}</p>
         `;
 
